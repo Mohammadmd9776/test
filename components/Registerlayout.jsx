@@ -6,6 +6,7 @@ import { Button } from '@mui/material'
 
 
 
+
 const Registerlayout = () => {
     const [pass,setPass] = useState('');
     const [rePass,setRePass] = useState('');
