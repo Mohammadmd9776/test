@@ -1,0 +1,10 @@
+.Log{
+    width: 250px;
+    height: 35px;
+    border-radius: 10px;
+
+
+}
+.Log::placeholder{
+    font-size: 15px;
+}

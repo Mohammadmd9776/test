@@ -1,5 +1,13 @@
 .container {
   padding: 0 2rem;
+  width: 100vw;
+  height: 100vh;
+  background-color:white ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(228, 222, 222);
 }
 
 .main {
