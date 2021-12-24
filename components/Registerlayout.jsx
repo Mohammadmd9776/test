@@ -6,17 +6,17 @@ import { Button } from '@mui/material'
 
 
 
-
+ 
 const Registerlayout = () => {
     const [pass,setPass] = useState('');
     const [rePass,setRePass] = useState('');
 
     const signupClicked=()=>{
        if(pass == rePass){
-           console.log('ok')
+          alert("ok")
        }else{
 //Alert.alert('nok')
-console.log('nok')
+        alert('nok')
        }
     }
     
