@@ -19,6 +19,10 @@ const Loginasl = () => {
   const onSubmit = (values) => {
     console.log("Form data", values);
   };
+  const handleSubmit =(e) =>{
+    e.preventDefault();
+    alert("hjk")
+  };
 
   return (
     <div
@@ -86,16 +90,22 @@ const Loginasl = () => {
                   display: "flex",
                 }}
               >
-                <Link href={"/Register"}>
-                  <a>
+               
                     <Button
                       variant="outlined"
                       sx={{ backgroundColor: "white", borderRadius: 10, borderRadius: 2, width:"100%" }}
-                    >
+                      onClick={handleSubmit}
+
+
+                      
+                      
+                      
+                      
+                      >
+                    
                       Signup
                     </Button>{" "}
-                  </a>
-                </Link>
+               
               </div>
             </Form>
           );
