@@ -1,118 +1,67 @@
 import React from "react";
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import FormikControl from "./FormikControl";
-import { Button } from "@mui/material";
-import Link from "next/link";
+import ReactDOM from "react-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { Box, Stack } from "@mui/material";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import { useRouter } from "next/router";
 
-const Loginasl = () => {
-  const initialValues = {
-    email: "",
-    password: "",
-  };
+const validationSchema = yup.object({
+  email: yup
+    .string("Enter your email")
+    .email("Email is not valid")
+    .required("Email is required"),
+  password: yup
+    .string("Enter your password")
+    .min(8, "Password should be of minimum 8 characters length")
+    .required("Password is required"),
+});
 
-  const validationSchema = Yup.object({
-    email: Yup.string().email("Invalid email format").required("Required"),
-    password: Yup.string().required("Required"),
+const Login = () => {
+  const router = useRouter();
+  const formik = useFormik({
+    initialValues: {
+      email: "foobar@example.com",
+      password: "foobar",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      router.push("/Todo");
+    },
   });
 
-  const onSubmit = (values) => {
-    console.log("Form data", values);
-  };
-  const handleSubmit =(e) =>{
-    e.preventDefault();
-    alert("hjk")
-  };
-
   return (
-    <div
-      style={{
-        width: "50%",
-        height: "60%",
-        justifyContent: "center",
-        alignItems: "center",
-        display: "flex",
-      }}
-    >
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={onSubmit}
-      >
-        {(formik) => {
-          return (
-            <Form>
-              <FormikControl
-                control="input"
-                type="email"
-                label="Email"
-                name="email"
-              />
-
-              <FormikControl
-                control="input"
-                type="password"
-                label="password"
-                name="password"
-              />
-
-              <div
-                style={{
-                  marginTop: 20,
-                  alignItems: "center",
-                  flex: 1,
-                  width: "100%",
-                  justifyContent: "center",
-                  display: "flex",
-                }}
-              >
-                <Link href={"/Todo"}>
-                  <a>
-                    <Button
-
-                      variant="outlined"
-                      sx={{ backgroundColor: "white", borderRadius: 10, borderRadius: 2, width:"100%" }}
-                      disabled={!formik.dirty && formik.isValid}
-                    >
-                      Signin
-                    </Button>{" "}
-                  </a>
-                </Link>
-              </div>
-
-              <div
-                style={{
-                  marginTop: 20,
-                  alignItems: "center",
-                  flex: 1,
-                  width: "100%",
-                  justifyContent: "center",
-                  display: "flex",
-                }}
-              >
-               
-                    <Button
-                      variant="outlined"
-                      sx={{ backgroundColor: "white", borderRadius: 10, borderRadius: 2, width:"100%" }}
-                      onClick={handleSubmit}
-
-
-                      
-                      
-                      
-                      
-                      >
-                    
-                      Signup
-                    </Button>{" "}
-               
-              </div>
-            </Form>
-          );
-        }}
-      </Formik>
-    </div>
+    <form onSubmit={formik.handleSubmit}>
+      <Stack direction="column" sx={{ width: "400px" }}>
+        <TextField
+          fullWidth
+          id="email"
+          name="email"
+          label="Email"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
+        />
+        <TextField
+          fullWidth
+          id="password"
+          name="password"
+          label="Password"
+          type="password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
+        />
+        <Box sx={{ my: 4 }} />
+        <Button color="primary" variant="contained" fullWidth type="submit">
+          Login
+        </Button>
+      </Stack>
+    </form>
   );
 };
 
-export default Loginasl;
+export default Login;
