@@ -1,18 +1,13 @@
-import React from 'react'
+import React from "react";
 
-import styles from '../styles/Home.module.css'
-import Todoasli2 from '../components/todo/Todoasli2'
-
+import Todoasli2 from "../components/todo/Todo";
 
 const Todo = () => {
-    return (
-        <div >
-            <Todoasli2/>
-            
+  return (
+    <div>
+      <Todoasli2 />
+    </div>
+  );
+};
 
-            
-        </div>
-    )
-}
-
-export default Todo
+export default Todo;
