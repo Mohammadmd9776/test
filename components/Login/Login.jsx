@@ -65,8 +65,10 @@ const Loginasl = () => {
                 <Link href={"/Todo"}>
                   <a>
                     <Button
+
                       variant="outlined"
                       sx={{ backgroundColor: "white", borderRadius: 10, borderRadius: 2, width:"100%" }}
+                      disabled={!formik.dirty && formik.isValid}
                     >
                       Signin
                     </Button>{" "}

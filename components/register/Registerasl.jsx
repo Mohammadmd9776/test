@@ -19,7 +19,7 @@ const Registerasl = () => {
     confirmpassword: Yup.string().oneOf(
       [Yup.ref("password"), ""],
       "password must match"
-    ),
+    ).required("Required"),
   });
 
   return (
@@ -37,12 +37,16 @@ const Registerasl = () => {
         {(formik) => {
           return (
             <Form>
+
+             
               <FormikControl
                 control="input"
                 type="email"
                 label="Email"
                 name="email"
               />
+              
+              
 
               <FormikControl
                 control="input"
@@ -50,6 +54,8 @@ const Registerasl = () => {
                 label="password"
                 name="password"
               />
+             
+              
 
               <FormikControl
                 control="input"
@@ -57,15 +63,20 @@ const Registerasl = () => {
                 label="confirmpassword"
                 name="confirmpassword"
               />
+              
 
-              <div style={{ justifyContent: "center", display: "flex" }}>
+              
                 <Button
+                    
+                    
+                   
                   variant="outlined"
-                  sx={{ backgroundColor: "white", borderRadius: 2, width:"100%" }}
+                  sx={{ backgroundColor: "white", borderRadius: 2, width:"100%",marginTop:2 }}
+                  disabled={!formik.dirty && formik.isValid}
                 >
                   signup
                 </Button>
-              </div>
+              
             </Form>
           );
         }}
