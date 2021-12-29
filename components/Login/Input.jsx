@@ -15,9 +15,7 @@ const Input = (props) => {
         id={name}
         name={name}
         {...rest}
-        render={({ field /* { name, value, onChange, onBlur } */ }) => (
-          <TextField {...field} />
-        )}
+        render={({ field }) => <TextField {...field} />}
       />
 
       <ErrorMessage name={name} component={TextError} />

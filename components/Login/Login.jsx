@@ -6,6 +6,7 @@ import { Box, Stack } from "@mui/material";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const validationSchema = yup.object({
   email: yup
@@ -22,8 +23,8 @@ const Login = () => {
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
-      email: "foobar@example.com",
-      password: "foobar",
+      email: "",
+      password: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -59,6 +60,21 @@ const Login = () => {
         <Button color="primary" variant="contained" fullWidth type="submit">
           Login
         </Button>
+
+        <div style={{ marginTop: 10 }}>
+          <Link href={"/Register"}>
+            <a>
+              <Button
+                color="primary"
+                variant="contained"
+                fullWidth
+                type="submit"
+              >
+                Login
+              </Button>
+            </a>
+          </Link>
+        </div>
       </Stack>
     </form>
   );
