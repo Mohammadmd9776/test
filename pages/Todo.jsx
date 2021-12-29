@@ -1,12 +1,14 @@
 import React from 'react'
-import Todolayout from '../components/Todolayout'
+
 import styles from '../styles/Home.module.css'
+import Todoasli2 from '../components/todo/Todoasli2'
 
 
 const Todo = () => {
     return (
-        <div className={styles.container}>
-            <Todolayout/>
+        <div >
+            <Todoasli2/>
+            
 
             
         </div>
