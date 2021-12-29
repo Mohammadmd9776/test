@@ -8,28 +8,19 @@ import Fieldstyle from "./Fieldstyle";
 const Input = (props) => {
   const { label, name, ...rest } = props;
   return (
-    <div >
+    <div>
       <div>
         <label htmlFor={name}>{label}</label>
       </div>
 
-      
-
-      <Field id={name} name={name} {...rest} 
-      render={({ field /* { name, value, onChange, onBlur } */ }) => (
-        
-        <TextField  {...field}/>
-
-        
-      )}
-      
-      
-      
-      
+      <Field
+        id={name}
+        name={name}
+        {...rest}
+        render={({ field /* { name, value, onChange, onBlur } */ }) => (
+          <TextField {...field} />
+        )}
       />
-
-      
-      
 
       <ErrorMessage name={name} component={TextError} />
     </div>
